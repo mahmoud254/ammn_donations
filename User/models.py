@@ -1,5 +1,4 @@
 from django.db import models
-from projects import models as Project
 
 
 # Create your models here.
@@ -19,16 +18,16 @@ class User(models.Model):
 
 class UserContribution(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)
     rate = models.IntegerField()
     donate = models.IntegerField()
 
 
 class MultiPics(models.Model):
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)
     pic = models.CharField(max_length=200)
 
 
 class MultiTags(models.Model):
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)
     tag = models.CharField(max_length=200)
