@@ -134,3 +134,4 @@ EMAIL_HOST_USER = 'report.tool2019@gmail.com'
 EMAIL_HOST_PASSWORD = 'report12345'
 EMAIL_PORT = 587
 
+AUTH_USER_MODEL = 'User.User'
