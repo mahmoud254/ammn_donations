@@ -1,12 +1,12 @@
 from django.db import models
-from User import models as User
+from User import models as User_models
 
 
 # Create your models here.
 
 
-class Project(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+class Projects(models.Model):
+    user_id = models.ForeignKey(User_models.User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     details = models.CharField(max_length=300)
     category = models.CharField(max_length=100)
@@ -16,8 +16,8 @@ class Project(models.Model):
 
 
 class Comment(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User_models.User, on_delete=models.CASCADE)
+    project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
     no_report = models.IntegerField()
 
