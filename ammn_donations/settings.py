@@ -127,4 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'report.tool2019@gmail.com'
+EMAIL_HOST_PASSWORD = 'report12345'
+EMAIL_PORT = 587
+
+AUTH_USER_MODEL = 'User.User'
