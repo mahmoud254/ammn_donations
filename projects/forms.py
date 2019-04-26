@@ -1,9 +1,13 @@
 from django import forms
-from projects.models import Document,Projects
+from projects.models import Projects
+from projects.models import Category
 
-class DocumentForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        fields = ('description', 'document', )
-    title = forms.CharField(label='title', max_length=100)
-    comment = forms.CharField(widget=forms.Textarea,label='Your comment', max_length=100)
+class DocumentForm(forms.Form):
+    title = forms.CharField(label='Title',required=True)
+    details =forms.CharField(widget=forms.Textarea,label='Details',required=True)
+    total_target=forms.IntegerField(required=True)
+    start_date=forms.DateField(required=True)
+    end_date=forms.DateField(required=True)
+    document=forms.FileField(required=True)
+    result = [(q["id"], q['categories']) for q in Category.objects.values()]
+    category_id = forms.ChoiceField(choices=result, required=True )

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    < class="wrapper">
         <header class="header">
             <section class="header-top">
                 <div class="container">
@@ -115,7 +115,6 @@
                 </div>
             </div>
         </section>
-
 <section class="donors">
     <div class="container">
         <div class="row">
@@ -123,7 +122,11 @@
                 <div class="donors_input" style="float: left;position: relative;left: 25%;">
  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+     {% for field in form %}
+        <h4>
+            {{ field.label_tag }} {{ field }}
+        </h4>
+    {% endfor %}
     <button type="submit">Upload</button>
   </form>
                     </div>

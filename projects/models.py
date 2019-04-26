@@ -17,6 +17,7 @@ class Projects(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     is_featured = models.BooleanField(default=False)
+    document = models.FileField(upload_to='documents/')
 
 
 class Comment(models.Model):
@@ -30,10 +31,3 @@ class Replies(models.Model):
     comment_id = models.ForeignKey(Comment, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
     no_report = models.IntegerField()
-
-
-class Document(models.Model):
-    # project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
-    description = models.CharField(max_length=255, blank=True)
-    document = models.FileField(upload_to='documents/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
