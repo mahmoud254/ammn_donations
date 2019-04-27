@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'User.apps.UserConfig', 
     'projects',
-    'User'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +135,6 @@ EMAIL_HOST_PASSWORD = 'report12345'
 EMAIL_PORT = 587
 
 AUTH_USER_MODEL = 'User.User'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

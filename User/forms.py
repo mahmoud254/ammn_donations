@@ -5,13 +5,13 @@ from .models import User
 from django.contrib.auth.admin import UserAdmin
 
 class CustomUserCreationForm(UserCreationForm):
-    mobile_phone = forms.IntegerField()
+    
     class Meta(UserCreationForm):
         model = User
-        fields = ('username', 'email' , 'mobile_phone')
+        fields = ('username','first_name', 'last_name' , 'mobile_phone' ,  'email',)
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email' , 'mobile_phone')
+        fields = ('username', 'email' )
