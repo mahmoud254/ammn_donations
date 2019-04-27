@@ -17,7 +17,7 @@ class Projects(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     is_featured = models.BooleanField(default=False)
-    document = models.FileField(upload_to='documents/')
+    document = models.FileField(upload_to='projects/static/documents/')
 
 
 class Comment(models.Model):
