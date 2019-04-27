@@ -33,14 +33,16 @@ LOGIN_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'User.apps.UserConfig', 
     'projects',
-    'User'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,8 @@ EMAIL_HOST_PASSWORD = 'report12345'
 EMAIL_PORT = 587
 
 AUTH_USER_MODEL = 'User.User'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+PASSWORD_RESET_TIMEOUT_DAYS=1
