@@ -115,27 +115,55 @@
                 </div>
             </div>
         </section>
-<section class="donors">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="donors_input" style="float: left;position: relative;left: 25%;">
- <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-     {% for field in form %}
-        <h4>
-            {{ field.label_tag }} {{ field }}
-        </h4>
-    {% endfor %}
-    <button type="submit">Upload</button>
-  </form>
+
+
+        <section class="donors" style="height:1300px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" style="height:1300px;">
+                        <div class="donors_input" style="height:1300px;">
+                            <h2>DONATION NOW</h2>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                 {% for field in form %}
+                                    <h5>
+                                        {{ field.label_tag }} {{ field }}
+                                    </h5>
+                                {% endfor %}
+                                <h4>
+                                <input type="submit" name="Upload">
+                                    </h4>
+                            </form>
+                        </div>
+                        <div class="donors_image" style="height:1300px;">
+                            <h2>FEATURED DONORS</h2>
+                            <div class="donors_featured owl-carousel owl-theme">
+                                <div class="item">
+                                    <img src="{% static '/projects/img/donors_featured_one.jpg' %}" alt="">
+                                    <h3>Kenneth J. Garnica</h3>
+                                    <p>Donated Amount : <span>220 USD</span> </p>
+                                </div>
+                                <div class="item">
+                                    <img src="{% static '/projects/img/donors_featured_one.jpg' %}" alt="">
+                                    <h3>Kenneth J. Garnica</h3>
+                                    <p>Donated Amount : <span>220 USD</span> </p>
+                                </div>
+                                <div class="item">
+                                    <img src="{% static '/projects/img/donors_featured_one.jpg' %}" alt="">
+                                    <h3>Kenneth J. Garnica</h3>
+                                    <p>Donated Amount : <span>220 USD</span> </p>
+                                </div>
+                                <div class="item">
+                                    <img src="{% static '/projects/img/donors_featured_one.jpg' %}" alt="">
+                                    <h3>Kenneth J. Garnica</h3>
+                                    <p>Donated Amount : <span>220 USD</span> </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
+        </section>
   <section class="footer_carosal">
             <div class="container">
                 <div class="row">
