@@ -119,17 +119,17 @@
         </section>
 
 
-        <section class="donors" style="height:1300px;">
+        <section class="donors" style="height:1350px;margin-top:5%;margin-bottom:5%">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12" style="height:1300px;">
-                        <div class="donors_input" style="height:1300px;">
+                    <div class="col-md-12" style="height:1350px;">
+                        <div class="donors_input" style="height:1350px;">
                             <h2>DONATION NOW</h2>
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                  {% for field in form %}
                                     <h5>
-                                        {{ field.label_tag }} {{ field }}
+                                        {{ field }}
                                     </h5>
                                 {% endfor %}
                                 <h4>
@@ -137,7 +137,7 @@
                                     </h4>
                             </form>
                         </div>
-                        <div class="donors_image" style="height:1300px;">
+                        <div class="donors_image" style="height:1350px;">
                             <h2>FEATURED DONORS</h2>
                             <div class="donors_featured owl-carousel owl-theme">
                                 <div class="item">
@@ -270,8 +270,8 @@
             s.parentNode.insertBefore(ga, s);
         })();
     </script>
-    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
-    <script type="text/javascript" src="{% static '/admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+<script type="text/javascript" src="{% static '/admin/js/core.js' %}"></script>
 <script type="text/javascript" src="{% static '/admin/js/calendar.js' %}"></script>
 <script type="text/javascript" src="{% static '/admin/js/admin/DateTimeShortcuts.js' %}"></script>
 </body>

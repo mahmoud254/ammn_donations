@@ -609,7 +609,7 @@
     background: #01d262 none repeat scroll 0 0;
     float: left;
     height: 600px;
-    text-align: center;
+    text-align: left;
     width: 50%;
 }
 
@@ -655,7 +655,18 @@
     padding: 17px 20px;
     width: 47%;
 }
-
+.donors .donors_input h5 textarea {
+    background: #01d262 none repeat scroll 0 0;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    padding: 17px 20px;
+    width: 47%;
+	font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    margin-right: 2%;}
 .donors .donors_input h5 input[type="text"] {
     font-family: "Roboto", sans-serif;
     font-size: 15px;
@@ -683,10 +694,21 @@
     margin-top: 45px;
     padding: 15px 40px;
 }
-
 .donors .donors_input h4 {
     margin-top: 20px;
     text-align: center;
+}
+.donors .donors_input h5 select {
+    width: 47%;
+    background: #01d262 none repeat scroll 0 0;
+    border: none;
+    padding: 17px 20px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
 }
 
 .donors .donors_input h4 select {
