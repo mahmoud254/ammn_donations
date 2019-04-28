@@ -6,6 +6,10 @@ from .models import Projects
 from zipfile import ZipFile
 import os
 # Create your views here.
+def home(request):
+
+    return render(request, 'projects/home.html')
+
 
 def show_projects(request):
     projects=Projects.objects.all()
