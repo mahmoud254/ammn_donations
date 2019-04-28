@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="{% static '/projects/css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static '/projects/style.css' %}">
     <link rel="stylesheet" href="{% static '/projects/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/admin/css/widgets.css' %}">
+    <style>.calendar>table>caption{caption-side:unset}</style><!--caption fix for bootstrap4-->
+    {{ form.media }}
 </head>
 
 <body>
-    < class="wrapper">
         <header class="header">
             <section class="header-top">
                 <div class="container">
@@ -268,6 +270,10 @@
             s.parentNode.insertBefore(ga, s);
         })();
     </script>
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    <script type="text/javascript" src="{% static '/admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% static '/admin/js/calendar.js' %}"></script>
+<script type="text/javascript" src="{% static '/admin/js/admin/DateTimeShortcuts.js' %}"></script>
 </body>
 
 </html>
