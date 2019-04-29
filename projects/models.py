@@ -24,7 +24,7 @@ class Comment(models.Model):
     user_id = models.ForeignKey(User_models.User, on_delete=models.CASCADE)
     project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
-    no_report = models.IntegerField()
+    no_report = models.IntegerField(null=True)
 
 
 class Replies(models.Model):

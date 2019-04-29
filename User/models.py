@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 # Create your models here.
 
 
@@ -22,8 +23,13 @@ class User(AbstractUser):
 class UserContribution(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)
-    rate = models.IntegerField()
     donate = models.IntegerField()
+
+
+class User_rating(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)
+    rating = models.IntegerField()
 
 
 class MultiPics(models.Model):
