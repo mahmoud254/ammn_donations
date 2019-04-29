@@ -6,9 +6,11 @@ from django.contrib.auth.admin import UserAdmin
 
 class CustomUserCreationForm(UserCreationForm):
     
+    
+    # profile_pic = forms.ImageField() , 'profile_pic'
     class Meta(UserCreationForm):
         model = User
-        fields = ('username','first_name', 'last_name' , 'mobile_phone' ,  'email',)
+        fields = ('username','first_name', 'last_name' , 'mobile_phone' ,  'email')
 
 class CustomUserChangeForm(UserChangeForm):
 
@@ -18,6 +20,7 @@ class CustomUserChangeForm(UserChangeForm):
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
+    mobile_phone= forms.RegexField(regex=r'^01[0125][0-9]{8}$',help_text='invalid phone number')
     class Meta:
         model = User
         fields = ('username','first_name', 'last_name' , 'mobile_phone' ,  'email','password1', 'password2')
