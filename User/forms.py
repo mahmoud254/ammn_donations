@@ -21,6 +21,8 @@ class CustomUserChangeForm(UserChangeForm):
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
     mobile_phone= forms.RegexField(regex=r'^01[0125][0-9]{8}$',help_text='invalid phone number')
+    profile_pic = models.ImageField()
+
     class Meta:
         model = User
-        fields = ('username','first_name', 'last_name' , 'mobile_phone' ,  'email','password1', 'password2')
+        fields = ('username','first_name', 'last_name' , 'mobile_phone' ,  'email','password1', 'password2','profile_pic')

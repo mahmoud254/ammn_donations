@@ -142,3 +142,9 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 PASSWORD_RESET_TIMEOUT_DAYS=1
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
+MEDIA_URL = '/media/'
+# print "base dir path", BASE_DIR
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_root")
+

@@ -18,7 +18,10 @@ from .models import User
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    Hotels = request.user 
+    return render(request, 'index.html', {'hotel_images' : Hotels}) 
+
+    # return HttpResponse("Hello, world. You're at the polls index.")
 
 
 class SignUp(generic.CreateView):
@@ -28,7 +31,7 @@ class SignUp(generic.CreateView):
 
 def signup(request):
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST,request.FILES)
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
