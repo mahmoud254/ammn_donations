@@ -26,6 +26,7 @@ class UserContribution(models.Model):
     donate = models.IntegerField()
 
 
+
 class User_rating(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)

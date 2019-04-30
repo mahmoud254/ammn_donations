@@ -24,5 +24,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('projects/', include('projects.urls')),
     path('home', views.home, name='home'),
+    path('myprojects', views.my_projects, name='my_projects'),
+    path('mydonations', views.my_donations, name='my_donations'),
+    path('category/<int:id>', views.get_category, name="category"),
     path('jsi18n', JavaScriptCatalog.as_view(), name='javascript-catalog')
 ]

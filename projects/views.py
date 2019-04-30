@@ -37,9 +37,35 @@ def extract_projects(query_object):
 #####################################################
 # Create your views here.
 def home(request):
-    return render(request, 'projects/home.html')
+    categories = Category.objects.all()
+    best_rated = []
+    for query_object in User_rating.objects.select_related("project_id").raw(
+            'SELECT 1 as id,AVG(rating),project_id_id FROM "User_user_rating" GROUP BY "project_id_id" ORDER BY avg asc limit 5;'):
+        best_rated.append(query_object.project_id)
+    latest = Projects.objects.all().order_by('-start_date')[:5]
+    featured = Projects.objects.filter(is_featured=True)
+    return render(request, 'projects/home.html',
+                  {"best_rated": get_projects_data(best_rated), "latest": get_projects_data(latest),
+                   "featured": get_projects_data(featured),"categories":categories})
+def get_category(request, id):
+    category=Category.objects.get(pk=id)
+    projects = Projects.objects.filter(category_id=category)
+    return render(request, 'projects/category.html', {
+        'projects': get_projects_data(projects),"category":category.categories
+    })
+def my_projects(request):
+    user=request.user
+    projects = Projects.objects.filter(user_id=user)
+    return render(request, 'projects/my_projects.html', {
+        'projects': get_projects_data(projects)
+    })
 
-
+def my_donations(request):
+    user=request.user
+    donations = UserContribution.objects.select_related("project_id").filter(user_id=user)
+    return render(request, 'projects/my_donations.html', {
+        'donations': donations
+    })
 def rate(request, id):
     user = User.objects.get(pk=request.POST['user'])
     project = Projects.objects.get(pk=id)
@@ -139,8 +165,3 @@ def model_form_upload(request):
     return render(request, 'projects/model_form_upload.html', {
         'form': form
     })
-
-
-def create_category(request):
-    if request.method == "POST":
-        Category.objects.create(categories=request.POST['categories'])
