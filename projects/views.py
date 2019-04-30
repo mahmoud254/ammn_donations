@@ -12,6 +12,11 @@ from zipfile import ZipFile
 import itertools
 import os
 
+from django.conf import settings
+from django.urls import reverse
+from django.shortcuts import render, get_object_or_404
+from paypal.standard.forms import PayPalPaymentsForm
+
 
 ####################helper functions##################
 def get_projects_data(projects):
@@ -46,26 +51,33 @@ def home(request):
     featured = Projects.objects.filter(is_featured=True)
     return render(request, 'projects/home.html',
                   {"best_rated": get_projects_data(best_rated), "latest": get_projects_data(latest),
-                   "featured": get_projects_data(featured),"categories":categories})
+                   "featured": get_projects_data(featured), "categories": categories})
+
+
 def get_category(request, id):
-    category=Category.objects.get(pk=id)
+    category = Category.objects.get(pk=id)
     projects = Projects.objects.filter(category_id=category)
     return render(request, 'projects/category.html', {
-        'projects': get_projects_data(projects),"category":category.categories
+        'projects': get_projects_data(projects), "category": category.categories
     })
+
+
 def my_projects(request):
-    user=request.user
+    user = request.user
     projects = Projects.objects.filter(user_id=user)
     return render(request, 'projects/my_projects.html', {
         'projects': get_projects_data(projects)
     })
 
+
 def my_donations(request):
-    user=request.user
+    user = request.user
     donations = UserContribution.objects.select_related("project_id").filter(user_id=user)
     return render(request, 'projects/my_donations.html', {
         'donations': donations
     })
+
+
 def rate(request, id):
     user = User.objects.get(pk=request.POST['user'])
     project = Projects.objects.get(pk=id)
@@ -120,10 +132,24 @@ def get_project(request, id):
     images = []
     for img in os.listdir("projects/static/documents/" + project.document.name.split("/")[3].split(".")[0]):
         images.append("documents/" + project.document.name.split("/")[3].split(".")[0] + "/" + img)
+    ############## paypal section#################3
+    host = request.get_host()
+    paypal_dict = {
+        'business': settings.PAYPAL_RECEIVER_EMAIL,
+        'amount': '100',
+        'item_name': 'Item_Name_xyz',
+        'invoice': ' Test Payment Invoice',
+        'currency_code': 'USD',
+        'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
+        'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
+        'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
+    }
+    form = PayPalPaymentsForm(initial=paypal_dict)
 
+    #############################################
     return render(request, 'projects/project.html', {
         'project': project, 'images': images, 'rating': user_rating, 'raised': sumation_donate, 'ratio': ratio,
-        'comments': comments, 'similar_projects': get_projects_data(similar_projects)
+        'comments': comments, 'similar_projects': get_projects_data(similar_projects), 'form': form
     })
 
 

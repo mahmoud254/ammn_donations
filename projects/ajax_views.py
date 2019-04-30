@@ -15,17 +15,15 @@ def rate(request, id):
         User_rating.objects.create(project_id=project, user_id=user, rating=rating)
 
 
-def add_comment(request,id):
+def add_comment(request, id):
     user = User.objects.get(pk=request.POST['user'])
     project = Projects.objects.get(pk=id)
 
     if request.method == 'POST':
-        comment=Comment.objects.create(user_id=user, project_id=project,
-                               text=request.POST['comment'])
+        comment = Comment.objects.create(user_id=user, project_id=project,
+                                         text=request.POST['comment'])
 
-        return JsonResponse({"id":comment.id,"text":comment.text,"user":user.username})
+        return JsonResponse({"id": comment.id, "text": comment.text, "user": user.username})
 
     else:
         return JsonResponse({'message': 'not post'})
-
-
