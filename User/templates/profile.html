@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <h1>Profile</h1>
+    <p>Username: {{ user.username }}</p>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.mobile_phone }}</p>
+    <p>Birthdate: {{ user.birth_date }}</p>
+    <p>Country: {{ user.country }}</p>
+    <p>Facebook: {{ user.fb_profile }}</p>
+    {% if user.profile_pic %}
+    <img src="{{ user.profile_pic.url }}" width="240">
+    {% endif %}
+
+    <a href="{% url 'change_password' %}">Change password</a> 
+    <a href="{% url 'user_delete' %}">Delete Profile</a>
+</div>
+
+{% endblock %}
