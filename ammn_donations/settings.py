@@ -33,16 +33,22 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'User.apps.UserConfig', 
     'projects',
+<<<<<<< HEAD
     'User',
     'corsheaders',
     'paypal.standard.ipn'
+=======
+    'rest_framework',
+>>>>>>> authontication
 ]
 PAYPAL_RECEIVER_EMAIL = 'mahmoudalaa25492-facilitator@gmail.com'
 PAYPAL_TEST = True
@@ -140,3 +146,17 @@ EMAIL_HOST_PASSWORD = 'report12345'
 EMAIL_PORT = 587
 
 AUTH_USER_MODEL = 'User.User'
+<<<<<<< HEAD
+=======
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+PASSWORD_RESET_TIMEOUT_DAYS=1
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
+MEDIA_URL = '/media/'
+# print "base dir path", BASE_DIR
+# MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_root")
+
+>>>>>>> authontication
