@@ -56,10 +56,6 @@ class User(AbstractUser):
     REQUIRED_FIELDS = [] # removes email from REQUIRED_FIELDS
     objects = UserManager()
 
-    def __str__(self):
-        return self.email
-
-
 class UserContribution(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     project_id = models.ForeignKey("projects.Projects", on_delete=models.CASCADE)
