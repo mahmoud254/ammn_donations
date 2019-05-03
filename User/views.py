@@ -24,10 +24,10 @@ def index(request):
     # return HttpResponse("Hello, world. You're at the polls index.")
 
 
-class SignUp(generic.CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'signup.html'
+# class SignUp(generic.CreateView):
+#     form_class = CustomUserCreationForm
+#     success_url = reverse_lazy('login')
+#     template_name = 'signup.html'
 
 def signup(request):
     if request.method == 'POST':
