@@ -40,15 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'User.apps.UserConfig', 
+    # 'User.apps.UserConfig', 
     'projects',
-<<<<<<< HEAD
     'User',
     'corsheaders',
-    'paypal.standard.ipn'
-=======
+    'paypal.standard.ipn',
     'rest_framework',
->>>>>>> authontication
 ]
 PAYPAL_RECEIVER_EMAIL = 'mahmoudalaa25492-facilitator@gmail.com'
 PAYPAL_TEST = True
@@ -146,8 +143,6 @@ EMAIL_HOST_PASSWORD = 'report12345'
 EMAIL_PORT = 587
 
 AUTH_USER_MODEL = 'User.User'
-<<<<<<< HEAD
-=======
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
@@ -159,4 +154,3 @@ MEDIA_URL = '/media/'
 # print "base dir path", BASE_DIR
 # MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_root")
 
->>>>>>> authontication
