@@ -9,4 +9,7 @@ urlpatterns = [
     path('<int:id>', views.get_project, name="get_project"),
     path('<int:id>/rate', ajax_views.rate, name='rate'),
     path('<int:id>/comment', ajax_views.add_comment, name='comment'),
+    path('<int:id>/comment/<int:cmid>/report', ajax_views.report_comment, name='report_comment'),
+    path('<int:id>/report', ajax_views.report_project, name='report_project'),
+
 ]
