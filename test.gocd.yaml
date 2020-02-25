@@ -1,8 +1,8 @@
 format_version: 3
 pipelines:
-  test:
+  yamltest:
     group: defaultGroup
-    template: yamltest
+    template: test
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
     display_order: -1
